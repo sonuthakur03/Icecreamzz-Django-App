@@ -62,5 +62,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **Contact**  
 For any queries or issues, feel free to reach out at:  
-Email: sonu.thakur@scolleg.edu.np  
+Email: sonu.thakur@scollege.edu.np  
 GitHub: [https://github.com/sonuthakur03](https://github.com/sonuthakur03)
