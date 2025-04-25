@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Order Success{% endblock %}
+
+{% block body %}
+<div class="container text-center mt-5">
+    <h2>Order Confirmed 🎉</h2>
+    <p>You ordered <strong>{{ ice_cream.name }}</strong> (x{{ quantity }})</p>
+    <p>Delivery to: {{ address }}</p>
+    <div class="container text-center mt-5">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-3">
+                <a href="/" class="btn btn-success w-100">Go to Home</a>
+            </div>
+            <div class="col-md-3">
+                <a href="/services" class="btn btn-primary w-100">Explore More Ice Creams</a>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-3">
+                <a href="/customorder" class="btn btn-secondary w-100">Create Custom Order</a>
+            </div>
+            <div class="col-md-3">
+                <a href="/orders" class="btn btn-info w-100">View My Orders</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

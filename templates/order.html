@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Order {{ ice_cream.name }}{% endblock title %}
+
+{% block body %}
+<div class="container mt-5 border border-secondary rounded p-4 bg-dark shadow-sm">
+    <h2 class="mb-4">Order: {{ ice_cream.name }}</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ ice_cream.image_url }}" class="img-fluid rounded shadow w-100" style="height: 500px; object-fit: cover;" alt="{{ ice_cream.name }}">
+        </div>
+        <div class="col-md-6">
+            <h4>Description</h4>
+            <p>{{ ice_cream.description }}</p>
+            <h5 class="text-success">Price: {{ ice_cream.price }}</h5>
+
+            <form action="{% url 'order' id %}" method="post" class="mt-4">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" name="quantity" class="form-control" id="quantity" min="1" value="1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Delivery Address</label>
+                    <textarea name="address" class="form-control" id="address" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Place Order</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}
