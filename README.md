@@ -4,6 +4,10 @@
 **Project Description**  
 IceCreamzz is a Django-based web application for managing an ice cream store. The application allows users to browse available ice cream flavors, make orders, and manage the store's inventory. It features a clean interface with a focus on user experience and ease of use.
 
+## Live Website
+Check out the live version of the project here:
+👉 [Icreamzz](https://sonuthakur.pythonanywhere.com/)
+
 **Features**
 
 -   User-friendly interface to view and order ice creams.
