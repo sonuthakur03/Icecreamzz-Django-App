@@ -3,36 +3,36 @@
 {% block title %}Contact{% endblock title %}
 
 {% block body %}
-    {% comment %} <div class="container-fluid text-center mb-4 px-0">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
-        class="d-block w-100 img-fluid"
-        alt="Contact Us"
-        style="height: 300px; width: 100%; object-fit: contain;">
-   
-    </div> {% endcomment %}
-    
-    <div class="container mt-3 border border-secondary rounded p-4 shadow-sm w-50 mx-auto" style="background-color:rgb(86, 90, 93);">
-        <h1 class="text-center mb-4">Contact Us</h1>
-        <p class="lead text-center">We would love to hear from you! Please fill out the form below.</p>
-        <form method="post" action="{% url 'contact' %}">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <div class="border border-secondary rounded p-5 shadow-sm" style="background-color: rgb(86, 90, 93); max-width: 500px; margin: auto;">
+                    <h1 class="text-center mb-4">Contact Us</h1>
+                    <p class="lead text-center">We would love to hear from you! Please fill out the form below.</p>
+                    <form method="post" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone" required>
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-80">Send Message</button>
-        </form>
+        </div>
     </div>
 {% endblock body %}
