@@ -4,57 +4,67 @@
 
 {% block body %}
 <div class="container mt-5">
-    <h2 class="mb-4">Ice Cream Orders</h2>
-    <div class="row">
-        {% if orders %}
-            {% for order in orders %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ order.quantity }}x {{ order.flavor }}</h5>
-                            <p class="card-text"><strong>Delivery Address:</strong> {{ order.address }}</p>
-                            <p class="card-text"><strong>Special Instructions:</strong> This is not a customized order.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Submitted on: {{ order.date|date:"M d, Y H:i" }}</small>
-                        </div>
-                        <a href="{% url 'delete_order' order.id %}" class="btn btn-sm btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
-                    </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <div class="col-12">
-                <p>No ice cream orders have been submitted yet.</p>
-            </div>
-        {% endif %}
-    </div>
-</div>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Customized Orders</h2>
-    <div class="row">
-        {% if customOrders %}
-            {% for order in customOrders %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ order.quantity }}x {{ order.flavor }}</h5>
-                            <p class="card-text"><strong>Toppings:</strong> {{ order.toppings|default:"None" }}</p>
-                            <p class="card-text"><strong>Special Instructions:</strong> {{ order.special_instructions|default:"None" }}</p>
+    {% if user.is_authenticated %}
+    
+        <h2 class="mb-4">Ice Cream Orders</h2>
+        <div class="row">
+            {% if orders %}
+                {% for order in orders %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ order.quantity }}x {{ order.flavor }}</h5>
+                                <p class="card-text"><strong>Delivery Address:</strong> {{ order.address }}</p>
+                                <p class="card-text"><strong>Special Instructions:</strong> This is not a customized order.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Submitted on: {{ order.date|date:"M d, Y H:i" }}</small>
+                            </div>
+                            <a href="{% url 'delete_order' order.id %}" class="btn btn-sm btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
                         </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Submitted on: {{ order.date|date:"M d, Y H:i" }}</small>
-                        </div>
-                        <a href="{% url 'delete_order' order.id %}" class="btn btn-sm btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
                     </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12">
+                    <p>No ice cream orders have been submitted yet.</p>
                 </div>
-            {% endfor %}
-        {% else %}
-            <div class="col-12">
-                <p>No customized orders have been submitted yet.</p>
-            </div>
-        {% endif %}
-    </div>
-</div>
+            {% endif %}
+        </div>
 
+        <div class="container mt-5">
+            <h2 class="mb-4">Customized Orders</h2>
+            <div class="row">
+                {% if customOrders %}
+                    {% for order in customOrders %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ order.quantity }}x {{ order.flavor }}</h5>
+                                    <p class="card-text"><strong>Toppings:</strong> {{ order.toppings|default:"None" }}</p>
+                                    <p class="card-text"><strong>Special Instructions:</strong> {{ order.special_instructions|default:"None" }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Submitted on: {{ order.date|date:"M d, Y H:i" }}</small>
+                                </div>
+                                <a href="{% url 'delete_order' order.id %}" class="btn btn-sm btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12">
+                        <p>No customized orders have been submitted yet.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    {% else %}
+        <div class="text-center py-5">
+            <h3 class="mb-3">🚫 Please login to view your orders!</h3>
+            <a href="{% url 'login' %}" class="btn btn-success">Login</a>
+        </div>
+    {% endif %}
+
+</div>
 {% endblock body %}
